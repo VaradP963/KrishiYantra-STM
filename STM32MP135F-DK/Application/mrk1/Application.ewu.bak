@@ -1,0 +1,1809 @@
+﻿$version 13.05
+
+// This is the root component of the entire GUI application.
+$rect <49,160,249,200>
+$output false
+class Application : Core::Root
+{
+  $rect <500,10,700,50>
+  inherited property Bounds = <0,0,480,272>;
+
+  $rect <509,60,689,100>
+  inherited method Init()
+  {
+    this.PresentDialog( new Application::BootScreen, null, null, null, null, null, null, null, null, false );
+  }
+
+  // Directives to adapt the order of the above members according to how these members 
+  // where arranged when the project content was stored. In this manner the storage 
+  // and the expected order of the members don't depend. Merging of changes in the 
+  // project files is simplified.
+  $member Init
+  $member Bounds
+}
+
+$rect <700,249,900,289>
+$output false
+resource Resources::Font Font
+{
+  attr fontname FontName = Roboto;
+  attr fontheight Height = 22;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <469,149,669,189>
+$output false
+class CottonHarvest : Core::Group
+{
+  $rect <520,170,720,210>
+  inherited property Bounds = <0,0,480,272>;
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::cottonHarvy;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider ArmSpeed
+  {
+    preset Bounds = <240,193,440,243>;
+    preset Appearance = WidgetSet::HorizontalSlider_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <52,28,440,58>;
+    preset String = "COTTON HARVESTING MODE";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image3
+  {
+    preset Bounds = <78,78,172,177>;
+    preset Bitmap = Resource::start_button;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <240,162,453,192>;
+    preset String = "ARM SPEED";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <23,203,134,233>;
+    preset String = "RUN-TIME:";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <78,78>;
+    preset Point3 = <172,78>;
+    preset Point2 = <172,177>;
+    preset Point1 = <78,177>;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <125,203,189,233>;
+    preset String = "01:53";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image2
+  {
+    preset Bounds = <283,78,333,139>;
+    preset Bitmap = Resource::logs;
+  }
+}
+
+$rect <700,149,900,189>
+$output false
+class Home : Core::Group
+{
+  $rect <520,170,720,210>
+  inherited property Bounds = <0,0,480,272>;
+
+  $rect <10,390,210,430>
+  inherited method UpdateLayout()
+  {
+    // Always invoke the inherited method.
+    super( aSize );
+
+    /*
+
+      HINT:
+
+      This method exists for sophisticated layout calculation. Please note, that in 
+      most cases it is completely sufficient to use the views property 'Layout' to
+      determine how the view should behave when the component is resized.
+
+    */
+
+    /*
+
+      TO DO:
+
+      Put here the code to calculate new position and size of enclosed views. The
+      current (new) size of the component itself is passed in the parameter aSize.
+      For example:
+
+        SomeView.Bounds = rect( 10, 10, aSize.x - 20, aSize.y - 20 );
+
+    */
+  }
+
+  $rect <10,350,210,390>
+  inherited method UpdateViewState()
+  {
+    // Always invoke the inherited method.
+    super( aState );
+
+    /*
+
+      HINT 1:
+
+      This method is invoked automatically when the state set of the component has
+      been changed. The new state set can be found in the parameter aState.
+      Following are the important states:
+
+        Enabled   --> The component can react to user inputs.
+
+        Selected  --> The component is selected in context of its owner.
+
+        Focused   --> The component is selected in context of its owner and 
+                      the owner can react to keyboard events. In this manner the
+                      component is also able to react to keyboard events.
+
+        Modal     --> The component is modal. All events are redirected to this
+                      component.
+
+      To determine whether a state is currently active or not you have to test
+      the aState parameter. For example to test the 'Selected' state:
+
+        if ( aState.contains( Core::ViewState[ Selected ]))
+        {
+          ... yes, this component is currently selected.
+        }
+
+    */
+
+    /*
+
+      HINT 2:
+
+      Alternatively you can request this method invocation by executing explicitly
+      following code:
+
+
+        InvalidateViewState();
+
+    */
+      
+    /*
+
+      TO DO 1:
+
+      Put here the code to ensure that the visual aspect of the component does
+      reflect its current state. For example, depending on its 'Enabled' state
+      a component may appear with full colors or pale if it is disabled:
+
+        if ( aState.contains( Core::ViewState[ Enabled ]))
+        {
+          SomeBackgroundView.Opacity = 255;
+          SomeTextView.Color         = #000000FF;
+        }
+        else
+        {
+          SomeBackgroundView.Opacity = 128;
+          SomeTextView.Color         = #00000080;
+        }
+
+
+      TO DO 2:
+
+      You can evaluate here also the state of any other member in your component.
+      For example in a push-button component, the button should appear highlighted
+      as long as the user holds the finger within a touch area of the button:
+
+        if ( SomeTouchHandler.Down && SomeTouchHandler.Inside )
+          HighlightedBackground.Visible = true;
+        else
+          HighlightedBackground.Visible = false;
+
+      The touch handler itself only requests the update method to be called. Use
+      for this purpose 'InvalidateViewState()' method.
+
+
+      TO DO 3:
+
+      You can calculate here also the position/size of views accordingly to the
+      state of any other member in your component. For example in a slider you
+      can calculate the position of the slider knob from some properties like
+      'SliderValue' and 'SliderRange':
+
+        SliderKnob.Bounds.origin.x = ( SliderValue * Bounds.w ) / SliderRange;
+
+      Changing the 'SliderValue' or 'SliderRange' property should only request
+      the update method to be called. Use for this purpose 'InvalidateViewState()'
+      method.
+
+    */
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::cottonHarvy;
+  }
+
+  $rect <490,130,690,170>
+  slot GoToBoot
+  {
+    this.PresentDialog( new Application::BootScreen,null, null, null, null, null, null, null, null, false );
+    trace  "cotton";
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <0,0>;
+    preset Point3 = <52,0>;
+    preset Point2 = <52,66>;
+    preset Point1 = <0,66>;
+    preset OnPress = GoToBoot;
+  }
+}
+
+$rect <469,200,669,240>
+$output false
+class WeedRem : Core::Group
+{
+  $rect <520,170,720,210>
+  inherited property Bounds = <0,0,480,272>;
+
+  $rect <10,390,210,430>
+  inherited method UpdateLayout()
+  {
+    // Always invoke the inherited method.
+    super( aSize );
+
+    /*
+
+      HINT:
+
+      This method exists for sophisticated layout calculation. Please note, that in 
+      most cases it is completely sufficient to use the views property 'Layout' to
+      determine how the view should behave when the component is resized.
+
+    */
+
+    /*
+
+      TO DO:
+
+      Put here the code to calculate new position and size of enclosed views. The
+      current (new) size of the component itself is passed in the parameter aSize.
+      For example:
+
+        SomeView.Bounds = rect( 10, 10, aSize.x - 20, aSize.y - 20 );
+
+    */
+  }
+
+  $rect <10,350,210,390>
+  inherited method UpdateViewState()
+  {
+    // Always invoke the inherited method.
+    super( aState );
+
+    /*
+
+      HINT 1:
+
+      This method is invoked automatically when the state set of the component has
+      been changed. The new state set can be found in the parameter aState.
+      Following are the important states:
+
+        Enabled   --> The component can react to user inputs.
+
+        Selected  --> The component is selected in context of its owner.
+
+        Focused   --> The component is selected in context of its owner and 
+                      the owner can react to keyboard events. In this manner the
+                      component is also able to react to keyboard events.
+
+        Modal     --> The component is modal. All events are redirected to this
+                      component.
+
+      To determine whether a state is currently active or not you have to test
+      the aState parameter. For example to test the 'Selected' state:
+
+        if ( aState.contains( Core::ViewState[ Selected ]))
+        {
+          ... yes, this component is currently selected.
+        }
+
+    */
+
+    /*
+
+      HINT 2:
+
+      Alternatively you can request this method invocation by executing explicitly
+      following code:
+
+
+        InvalidateViewState();
+
+    */
+      
+    /*
+
+      TO DO 1:
+
+      Put here the code to ensure that the visual aspect of the component does
+      reflect its current state. For example, depending on its 'Enabled' state
+      a component may appear with full colors or pale if it is disabled:
+
+        if ( aState.contains( Core::ViewState[ Enabled ]))
+        {
+          SomeBackgroundView.Opacity = 255;
+          SomeTextView.Color         = #000000FF;
+        }
+        else
+        {
+          SomeBackgroundView.Opacity = 128;
+          SomeTextView.Color         = #00000080;
+        }
+
+
+      TO DO 2:
+
+      You can evaluate here also the state of any other member in your component.
+      For example in a push-button component, the button should appear highlighted
+      as long as the user holds the finger within a touch area of the button:
+
+        if ( SomeTouchHandler.Down && SomeTouchHandler.Inside )
+          HighlightedBackground.Visible = true;
+        else
+          HighlightedBackground.Visible = false;
+
+      The touch handler itself only requests the update method to be called. Use
+      for this purpose 'InvalidateViewState()' method.
+
+
+      TO DO 3:
+
+      You can calculate here also the position/size of views accordingly to the
+      state of any other member in your component. For example in a slider you
+      can calculate the position of the slider knob from some properties like
+      'SliderValue' and 'SliderRange':
+
+        SliderKnob.Bounds.origin.x = ( SliderValue * Bounds.w ) / SliderRange;
+
+      Changing the 'SliderValue' or 'SliderRange' property should only request
+      the update method to be called. Use for this purpose 'InvalidateViewState()'
+      method.
+
+    */
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::cottonHarvy;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider ArmSpeed
+  {
+    preset Bounds = <240,193,440,243>;
+    preset Appearance = WidgetSet::HorizontalSlider_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <115,28,366,58>;
+    preset String = "WEED REMOVAL MODE";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image3
+  {
+    preset Bounds = <78,78,172,177>;
+    preset Bitmap = Resource::start_button;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <240,162,453,192>;
+    preset String = "ARM SPEED";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <23,203,134,233>;
+    preset String = "RUN-TIME:";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <78,78>;
+    preset Point3 = <172,78>;
+    preset Point2 = <172,177>;
+    preset Point1 = <78,177>;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <125,203,189,233>;
+    preset String = "01:53";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Application::Home Home;
+}
+
+$rect <469,249,669,289>
+$output false
+class Sensors : Core::Group
+{
+  $rect <520,170,720,210>
+  inherited property Bounds = <0,0,480,272>;
+
+  $rect <10,390,210,430>
+  inherited method UpdateLayout()
+  {
+    // Always invoke the inherited method.
+    super( aSize );
+
+    /*
+
+      HINT:
+
+      This method exists for sophisticated layout calculation. Please note, that in 
+      most cases it is completely sufficient to use the views property 'Layout' to
+      determine how the view should behave when the component is resized.
+
+    */
+
+    /*
+
+      TO DO:
+
+      Put here the code to calculate new position and size of enclosed views. The
+      current (new) size of the component itself is passed in the parameter aSize.
+      For example:
+
+        SomeView.Bounds = rect( 10, 10, aSize.x - 20, aSize.y - 20 );
+
+    */
+  }
+
+  $rect <10,350,210,390>
+  inherited method UpdateViewState()
+  {
+    // Always invoke the inherited method.
+    super( aState );
+
+    /*
+
+      HINT 1:
+
+      This method is invoked automatically when the state set of the component has
+      been changed. The new state set can be found in the parameter aState.
+      Following are the important states:
+
+        Enabled   --> The component can react to user inputs.
+
+        Selected  --> The component is selected in context of its owner.
+
+        Focused   --> The component is selected in context of its owner and 
+                      the owner can react to keyboard events. In this manner the
+                      component is also able to react to keyboard events.
+
+        Modal     --> The component is modal. All events are redirected to this
+                      component.
+
+      To determine whether a state is currently active or not you have to test
+      the aState parameter. For example to test the 'Selected' state:
+
+        if ( aState.contains( Core::ViewState[ Selected ]))
+        {
+          ... yes, this component is currently selected.
+        }
+
+    */
+
+    /*
+
+      HINT 2:
+
+      Alternatively you can request this method invocation by executing explicitly
+      following code:
+
+
+        InvalidateViewState();
+
+    */
+      
+    /*
+
+      TO DO 1:
+
+      Put here the code to ensure that the visual aspect of the component does
+      reflect its current state. For example, depending on its 'Enabled' state
+      a component may appear with full colors or pale if it is disabled:
+
+        if ( aState.contains( Core::ViewState[ Enabled ]))
+        {
+          SomeBackgroundView.Opacity = 255;
+          SomeTextView.Color         = #000000FF;
+        }
+        else
+        {
+          SomeBackgroundView.Opacity = 128;
+          SomeTextView.Color         = #00000080;
+        }
+
+
+      TO DO 2:
+
+      You can evaluate here also the state of any other member in your component.
+      For example in a push-button component, the button should appear highlighted
+      as long as the user holds the finger within a touch area of the button:
+
+        if ( SomeTouchHandler.Down && SomeTouchHandler.Inside )
+          HighlightedBackground.Visible = true;
+        else
+          HighlightedBackground.Visible = false;
+
+      The touch handler itself only requests the update method to be called. Use
+      for this purpose 'InvalidateViewState()' method.
+
+
+      TO DO 3:
+
+      You can calculate here also the position/size of views accordingly to the
+      state of any other member in your component. For example in a slider you
+      can calculate the position of the slider knob from some properties like
+      'SliderValue' and 'SliderRange':
+
+        SliderKnob.Bounds.origin.x = ( SliderValue * Bounds.w ) / SliderRange;
+
+      Changing the 'SliderValue' or 'SliderRange' property should only request
+      the update method to be called. Use for this purpose 'InvalidateViewState()'
+      method.
+
+    */
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::cottonHarvy;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider ArmSpeed
+  {
+    preset Bounds = <240,193,440,243>;
+    preset Appearance = WidgetSet::HorizontalSlider_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <78,28,397,58>;
+    preset String = "COTTON HARVESTING MODE";
+    preset Font = Resource::Font;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image3
+  {
+    preset Bounds = <78,78,172,177>;
+    preset Bitmap = Resource::start_button;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <240,162,453,192>;
+    preset String = "ARM SPEED";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <23,203,134,233>;
+    preset String = "RUN-TIME:";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <78,78>;
+    preset Point3 = <172,78>;
+    preset Point2 = <172,177>;
+    preset Point1 = <78,177>;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <125,203,189,233>;
+    preset String = "01:53";
+    preset Font = Resource::Font;
+  }
+}
+
+$rect <469,309,669,349>
+$output false
+enum ScreenType
+{
+  $rect <10,-40,210,0>
+  item Initial;
+
+  $rect <10,10,210,50>
+  item BootScreen;
+
+  $rect <10,60,210,100>
+  item Home;
+
+  $rect <10,120,210,160>
+  item CottonHarvy;
+
+  $rect <10,170,210,210>
+  item WeedDetect;
+
+  $rect <10,220,210,260>
+  item Sensors;
+}
+
+// cc
+note group Note
+{
+  attr Bounds = <20,100,429,620>;
+}
+
+// va
+note group Note1
+{
+  attr Bounds = <440,100,929,369>;
+}
+
+// This is the root component of the entire GUI application.
+$rect <700,200,900,240>
+$output false
+class Application_AIO : Core::Root
+{
+  $rect <500,10,700,49>
+  inherited property Bounds = <0,0,480,272>;
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <0,0,480,272>;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::wallpaper;
+  }
+
+  $rect <500,140,700,180>
+  property Application::ScreenType CurrentScreen = Application::ScreenType.Initial;
+
+  $rect <500,180,700,220>
+  onset CurrentScreen
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure CurrentScreen == value )
+      return;
+
+    // Remember the property's new value.
+    pure CurrentScreen = value;
+
+    Gauge.Visible == (CurrentScreen == Application::ScreenType.BootScreen);
+    Gauge.Enabled == (CurrentScreen == Application::ScreenType.BootScreen);
+
+
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::Gauge Gauge
+  {
+    preset Bounds = <108,29,373,169>;
+    preset Enabled = true;
+    preset Appearance = WidgetSet::Gauge_Mono_Medium;
+  }
+
+  // The method Init() is invoked automatically after the component has been created. \
+  // This method can be overridden and filled with logic containing additional initialization \
+  // statements.
+  $rect <509,49,689,89>
+  method void Init1( arg handle aArg )
+  {
+    CurrentScreen = Application::ScreenType.BootScreen;
+  }
+
+  $rect <509,240,709,280>
+  object Effects::Int32Effect Int32Effect
+  {
+    preset OnFinished = GoToHome;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 1500;
+    preset Enabled = true;
+    preset Value2 = 100;
+    preset Outlet = ^Gauge.CurrentValue;
+  }
+
+  $rect <720,240,920,280>
+  slot GoToHome
+  {
+    CurrentScreen = Application::ScreenType.CottonHarvy;
+    trace  "Home";
+  }
+}
+
+$rect <49,220,249,260>
+$output false
+class BaseScreen : Core::Group
+{
+  $rect <510,70,710,110>
+  inherited property Bounds = <0,0,480,272>;
+}
+
+$rect <49,269,249,309>
+$output false
+class BootScreen : Application::BaseScreen
+{
+  $rect <510,30,690,70>
+  inherited method Init()
+  {
+    // TO DO: Write your code here ...
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::wallpaper1;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::Gauge Gauge
+  {
+    preset Bounds = <108,29,373,169>;
+    preset Enabled = true;
+    preset Appearance = WidgetSet::Gauge_Mono_Medium;
+  }
+
+  $rect <509,240,709,280>
+  object Effects::Int32Effect Int32Effect
+  {
+    preset OnFinished = GoToHome;
+    preset NoOfCycles = 1;
+    preset CycleDuration = 1500;
+    preset Enabled = true;
+    preset Value2 = 100;
+    preset Outlet = ^Gauge.CurrentValue;
+  }
+
+  $rect <720,240,920,280>
+  slot GoToHome
+  {
+    Owner.SwitchToDialog( new Application::HomeScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "HomeScreen";
+
+  }
+
+  $rect <552,144,802,184>
+  object Effects::FadeInOutTransition FadeInOutTransition;
+}
+
+$rect <49,320,249,360>
+$output false
+class CottonScreen : Application::BaseScreen
+{
+  $rect <510,30,690,70>
+  inherited method Init()
+  {
+    // TO DO: Write your code here ...
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::Bmp_2;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <52,28,440,58>;
+    preset String = "COTTON HARVESTING MODE";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image start
+  {
+    preset Bounds = <78,78,172,177>;
+    preset Bitmap = Resource::start_button1;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <240,78,453,108>;
+    preset String = "ARM SPEED";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <42,202,153,232>;
+    preset String = "RUN-TIME:";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <144,202,208,232>;
+    preset String = "0";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler1
+  {
+    preset Point4 = <0,0>;
+    preset Point3 = <52,0>;
+    preset Point2 = <52,78>;
+    preset Point1 = <0,78>;
+    preset OnPress = GoToHome;
+  }
+
+  $rect <499,92,699,132>
+  slot GoToHome
+  {
+    Owner.SwitchToDialog( new Application::HomeScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "HomeScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalScrollbar HorizontalScrollbar
+  {
+    preset Bounds = <246,112,446,142>;
+    preset Appearance = WidgetSet::HorizontalScrollbar_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <236,151,449,253>;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image1
+  {
+    preset Bounds = <236,177,286,227>;
+    preset Bitmap = Resource::logs1;
+  }
+
+  $rect <500,150,750,190>
+  object Effects::FadeInOutTransition FadeInOutTransition;
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <72,77>;
+    preset Point3 = <172,77>;
+    preset Point2 = <172,177>;
+    preset Point1 = <72,177>;
+    preset OnPress = StartPress;
+  }
+
+  $rect <430,330,630,370>
+  slot StartPress
+  {
+    if(stop.Visible)
+    {
+      stop.Visible = false;
+      start.Visible = true;
+      Int32Effect.Enabled = false;
+      trace "stop";
+      return;
+    }
+    else if(start.Visible)
+    {
+      start.Visible = false;
+      stop.Visible = true;
+      Int32Effect.Enabled = true;
+      trace "start";
+      return ;
+    }
+
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image stop
+  {
+    preset Bounds = <78,78,172,177>;
+    preset Bitmap = Resource::stop1;
+    preset Visible = false;
+  }
+
+  $rect <420,290,620,330>
+  object Effects::Int32Effect Int32Effect
+  {
+    preset CycleDuration = 50000;
+    preset Enabled = false;
+    preset Value2 = 60;
+    preset Outlet = ^Property;
+  }
+
+  $rect <210,290,410,330>
+  property int32 Property = 0;
+
+  $rect <210,330,410,370>
+  onset Property
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Property == value )
+      return;
+
+    // Remember the property's new value.
+    pure Property = value;
+    Text3.String = value;
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+}
+
+$rect <49,369,249,409>
+$output false
+class WeedScreen : Application::BaseScreen
+{
+  $rect <510,30,690,70>
+  inherited method Init()
+  {
+    // TO DO: Write your code here ...
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::Bmp_2;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <52,28,440,58>;
+    preset String = "WEED REMOVAL MODE";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <42,202,153,232>;
+    preset String = "RUN-TIME:";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <144,202,208,232>;
+    preset String = "0";
+    preset Font = Resource::Font;
+  }
+
+  $rect <499,92,699,132>
+  slot GoToHome
+  {
+    Owner.SwitchToDialog( new Application::HomeScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "HomeScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler1
+  {
+    preset Point4 = <0,0>;
+    preset Point3 = <52,0>;
+    preset Point2 = <52,78>;
+    preset Point1 = <0,78>;
+    preset OnPress = GoToHome;
+  }
+
+  $rect <510,150,710,190>
+  property float Property;
+
+  $rect <510,190,710,230>
+  onset Property
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Property == value )
+      return;
+
+    // Remember the property's new value.
+    pure Property = value;
+
+    Text3.String = value;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <240,78,453,108>;
+    preset String = "ARM SPEED";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalScrollbar HorizontalScrollbar
+  {
+    preset Bounds = <246,112,446,142>;
+    preset Appearance = WidgetSet::HorizontalScrollbar_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Rectangle Rectangle
+  {
+    preset Bounds = <236,151,449,253>;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image1
+  {
+    preset Bounds = <236,177,286,227>;
+    preset Bitmap = Resource::logs1;
+  }
+
+  $rect <520,250,770,290>
+  object Effects::FadeInOutTransition FadeInOutTransition;
+
+  $rect <430,330,630,370>
+  slot StartPress
+  {
+    if(stop.Visible)
+    {
+      stop.Visible = false;
+      start.Visible = true;
+      Int32Effect.Enabled = false;
+      trace "stop";
+      return;
+    }
+    else if(start.Visible)
+    {
+      start.Visible = false;
+      stop.Visible = true;
+      Int32Effect.Enabled = true;
+      trace "start";
+      return ;
+    }
+
+
+  }
+
+  $rect <420,290,620,330>
+  object Effects::Int32Effect Int32Effect
+  {
+    preset CycleDuration = 50000;
+    preset Enabled = false;
+    preset Value2 = 60;
+    preset Outlet = ^Property1;
+  }
+
+  $rect <210,290,410,330>
+  property int32 Property1 = 0;
+
+  $rect <210,330,410,370>
+  onset Property1
+  {
+    // The value doesn't change - nothing to do.
+    if ( pure Property1 == value )
+      return;
+
+    // Remember the property's new value.
+    pure Property1 = value;
+    Text3.String = value;
+    // TO DO:
+    // 
+    // Now you can handle the alternation of the property.
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image start
+  {
+    preset Bounds = <78,78,172,177>;
+    preset Bitmap = Resource::start_button1;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <72,77>;
+    preset Point3 = <172,77>;
+    preset Point2 = <172,177>;
+    preset Point1 = <72,177>;
+    preset OnPress = StartPress;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image stop
+  {
+    preset Bounds = <78,78,172,177>;
+    preset Bitmap = Resource::stop1;
+    preset Visible = false;
+  }
+}
+
+$rect <49,420,249,460>
+$output false
+class SensorScreen : Application::BaseScreen
+{
+  $rect <510,30,690,70>
+  inherited method Init()
+  {
+    // TO DO: Write your code here ...
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::Bmp_2;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <52,22,440,52>;
+    preset String = "SENSOR DATA";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::Gauge Gauge
+  {
+    preset Bounds = <33,72,193,212>;
+    preset Appearance = WidgetSet::Gauge_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::Gauge Gauge1
+  {
+    preset Bounds = <280,72,440,212>;
+    preset Appearance = WidgetSet::Gauge_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::ValueDisplay ValueDisplay
+  {
+    preset Bounds = <67,174,159,206>;
+    preset Unit = "g/m3";
+    preset Precision = 1;
+    preset Appearance = WidgetSet::ValueDisplay_Mono_Small;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::VerticalValueBar VerticalValueBar
+  {
+    preset Bounds = <221,72,271,232>;
+    preset Appearance = WidgetSet::VerticalValueBar_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler1
+  {
+    preset Point4 = <0,0>;
+    preset Point3 = <52,0>;
+    preset Point2 = <52,78>;
+    preset Point1 = <0,78>;
+    preset OnPress = GoToHome;
+  }
+
+  $rect <499,92,699,132>
+  slot GoToHome
+  {
+    Owner.SwitchToDialog( new Application::HomeScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "HomeScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <46,222,180,252>;
+    preset String = "Moisture";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <293,222,427,252>;
+    preset String = "Temperature";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <180,232,314,262>;
+    preset String = "Rain";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::ValueDisplay ValueDisplay1
+  {
+    preset Bounds = <321,174,399,206>;
+    preset Unit = "*C";
+    preset Precision = 1;
+    preset Appearance = WidgetSet::ValueDisplay_Mono_Small;
+  }
+
+  $rect <490,160,740,200>
+  object Effects::FadeInOutTransition FadeInOutTransition;
+}
+
+$rect <49,469,249,509>
+$output false
+class HomeScreen : Application::BaseScreen
+{
+  $rect <510,30,690,70>
+  inherited method Init()
+  {
+    // TO DO: Write your code here ...
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::Bmp_2;
+    preset Opacity = 255;
+  }
+
+  $rect <490,130,690,170>
+  slot GoToBoot
+  {
+    Owner.SwitchToDialog( new Application::BootScreen, SlideTransition, null, null, null, null, null, null, null, null, false );
+    trace  "BootScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler
+  {
+    preset Point4 = <0,0>;
+    preset Point3 = <52,0>;
+    preset Point2 = <52,66>;
+    preset Point1 = <0,66>;
+    preset OnPress = GoToBoot;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton SettingsButton
+  {
+    preset Bounds = <301,56,379,130>;
+    preset OnPress = GoToSet;
+    preset Label = "";
+    preset Appearance = WidgetSet::PushButton_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton SensorButton
+  {
+    preset Bounds = <301,161,379,235>;
+    preset OnPress = GoToSensor;
+    preset Label = "";
+    preset Appearance = WidgetSet::PushButton_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton CottonButton
+  {
+    preset Bounds = <98,54,176,128>;
+    preset OnPress = GoToCot;
+    preset Label = "";
+    preset Appearance = WidgetSet::PushButton_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton WeedButton
+  {
+    preset Bounds = <98,161,176,235>;
+    preset OnPress = GoToWeed;
+    preset Label = "";
+    preset Appearance = WidgetSet::PushButton_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image3
+  {
+    preset Bounds = <107,61,168,122>;
+    preset Bitmap = Resource::cotton;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image1
+  {
+    preset Bounds = <301,164,380,233>;
+    preset Bitmap = Resource::security1;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image4
+  {
+    preset Bounds = <105,168,170,229>;
+    preset Bitmap = Resource::grass1;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image5
+  {
+    preset Bounds = <310,62,371,123>;
+    preset Bitmap = Resource::gear1;
+  }
+
+  $rect <490,180,690,220>
+  slot GoToCot
+  {
+    Owner.SwitchToDialog( new Application::CottonScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "CottonScreen";
+  }
+
+  $rect <490,230,690,270>
+  slot GoToWeed
+  {
+    Owner.SwitchToDialog( new Application::WeedScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "WeedScreen";
+
+  }
+
+  $rect <490,280,690,320>
+  slot GoToSet
+  {
+    Owner.SwitchToDialog( new Application::SettingScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "SettingScreen";
+
+  }
+
+  $rect <490,330,690,370>
+  slot GoToSensor
+  {
+    Owner.SwitchToDialog( new Application::SensorScreen, ScaleTransition, null, null, null, null, null, null, null, null, false );
+    trace  "SensorScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <140,28,340,58>;
+    preset String = "HOME";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text1
+  {
+    preset Bounds = <90,128,190,158>;
+    preset String = "HARVEST";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text2
+  {
+    preset Bounds = <50,227,230,272>;
+    preset String = "WEED REMOVAL";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <290,128,390,158>;
+    preset String = "SETTINGS";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text4
+  {
+    preset Bounds = <290,235,390,265>;
+    preset String = "SENSORS";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <480,80,730,120>
+  object Effects::ScaleTransition ScaleTransition
+  {
+    preset Alignment = Effects::DialogAlignment[AlignHorzCenter, AlignHorzLeft, AlignVertCenter];
+  }
+
+  $rect <488,-6,738,34>
+  object Effects::FadeInOutTransition FadeInOutTransition;
+
+  $rect <10,290,260,330>
+  object Effects::SlideTransition SlideTransition
+  {
+    preset Direction = Core::Direction.BottomRight;
+  }
+}
+
+$rect <49,520,249,560>
+$output false
+class SettingScreen : Application::BaseScreen
+{
+  $rect <510,30,690,70>
+  inherited method Init()
+  {
+    // TO DO: Write your code here ...
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::Bmp_2;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::ToggleButton ToggleButton
+  {
+    preset Bounds = <266,79,326,119>;
+    preset Label = "Caption";
+    preset Appearance = WidgetSet::Switch_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider HorizontalSlider
+  {
+    preset Bounds = <240,197,440,247>;
+    preset Appearance = WidgetSet::HorizontalSlider_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider HorizontalSlider1
+  {
+    preset Bounds = <240,126,440,176>;
+    preset Appearance = WidgetSet::HorizontalSlider_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::ToggleButton ToggleButton1
+  {
+    preset Bounds = <23,136,83,176>;
+    preset Label = "Caption";
+    preset Appearance = WidgetSet::Switch_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::ToggleButton ToggleButton2
+  {
+    preset Bounds = <23,84,83,124>;
+    preset Label = "Caption";
+    preset Appearance = WidgetSet::Switch_Mono_Medium;
+  }
+
+  $rect <489,101,729,141>
+  object WidgetSet::ToggleButtonConfig ToggleButtonConfig;
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler1
+  {
+    preset Point4 = <0,0>;
+    preset Point3 = <52,0>;
+    preset Point2 = <52,78>;
+    preset Point1 = <0,78>;
+    preset OnPress = GoToHome;
+  }
+
+  $rect <530,180,730,220>
+  slot GoToHome
+  {
+    Owner.SwitchToDialog( new Application::HomeScreen, FadeInOutTransition, null, null, null, null, null, null, null, null, false );
+    trace  "HomeScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <273,232,407,262>;
+    preset String = "Speed";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text4
+  {
+    preset Bounds = <273,168,407,198>;
+    preset String = "Arm Speed";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Wifi
+  {
+    preset Bounds = <326,84,393,114>;
+    preset String = "Wifi";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Wifi1
+  {
+    preset Bounds = <83,141,188,171>;
+    preset String = "Bluetooth";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Wifi2
+  {
+    preset Bounds = <83,89,175,119>;
+    preset String = "Lights";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <140,28,340,58>;
+    preset String = "SETTINGS";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton
+  {
+    preset Bounds = <25,186,111,247>;
+    preset OnPress = GoToNav;
+    preset Icon = Resource::tractor1;
+    preset Label = "";
+    preset Appearance = WidgetSet::PushButton_Mono_Small;
+  }
+
+  $rect <510,230,710,270>
+  slot GoToNav
+  {
+    Owner.SwitchToDialog( new Application::NavScreen, SlideTransition, null, null, null, null, null, null, null, null, false );
+    trace  "NavScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text5
+  {
+    preset Bounds = <111,202,217,232>;
+    preset String = "Navigation";
+    preset Font = Resource::Font;
+    preset Color = #F8F8F8FF;
+  }
+
+  $rect <510,280,760,320>
+  object Effects::SlideTransition SlideTransition
+  {
+    preset Direction = Core::Direction.Bottom;
+  }
+
+  $rect <480,320,730,360>
+  object Effects::FadeInOutTransition FadeInOutTransition;
+
+  $rect <510,138,750,178>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset FaceBitmapDefault = Resource::right_arrow1;
+  }
+}
+
+$rect <49,569,249,609>
+$output false
+class NavScreen : Application::BaseScreen
+{
+  $rect <520,-20,700,20>
+  inherited method Init()
+  {
+    // TO DO: Write your code here ...
+  }
+
+  $rect <20,20,160,60>
+  object Views::Image Image
+  {
+    preset Bounds = <0,0,480,272>;
+    preset Bitmap = Resource::Bmp_2;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::ToggleButton ToggleButton
+  {
+    preset Bounds = <84,203,144,243>;
+    preset Label = "Caption";
+    preset Appearance = WidgetSet::Switch_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::HorizontalSlider HorizontalSlider
+  {
+    preset Bounds = <25,103,225,153>;
+    preset Appearance = WidgetSet::HorizontalSlider_Mono_Medium;
+  }
+
+  $rect <20,20,160,60>
+  object Core::SimpleTouchHandler SimpleTouchHandler1
+  {
+    preset Point4 = <0,0>;
+    preset Point3 = <52,0>;
+    preset Point2 = <52,78>;
+    preset Point1 = <0,78>;
+    preset OnPress = GoToSettings;
+  }
+
+  $rect <530,180,730,220>
+  slot GoToSettings
+  {
+    Owner.SwitchToDialog( new Application::SettingScreen, SlideTransition, null, null, null, null, null, null, null, null, false );
+    trace  "SettingScreen";
+
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text3
+  {
+    preset Bounds = <58,139,192,169>;
+    preset String = "Speed";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Wifi1
+  {
+    preset Bounds = <144,208,225,238>;
+    preset String = "Manual";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Wifi2
+  {
+    preset Bounds = <21,208,85,238>;
+    preset String = "Auto";
+    preset Font = Resource::Font;
+  }
+
+  $rect <20,20,160,60>
+  object Views::Text Text
+  {
+    preset Bounds = <140,28,340,58>;
+    preset String = "NAVIGATION";
+    preset Font = Resource::Font1;
+    preset Color = #00000fff;
+  }
+
+  $rect <490,230,740,270>
+  object Effects::SlideTransition SlideTransition
+  {
+    preset Direction = Core::Direction.Top;
+  }
+
+  $rect <510,138,750,178>
+  object WidgetSet::PushButtonConfig PushButtonConfig
+  {
+    preset FaceBitmapDefault = Resource::right_arrow1;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton1
+  {
+    preset Bounds = <320,118,380,178>;
+    preset Label = "Caption";
+    preset Appearance = PushButtonConfig3;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton2
+  {
+    preset Bounds = <260,178,320,238>;
+    preset Label = "Caption";
+    preset Appearance = PushButtonConfig2;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton3
+  {
+    preset Bounds = <320,178,380,238>;
+    preset Label = "Caption";
+    preset Appearance = PushButtonConfig1;
+  }
+
+  $rect <20,20,160,60>
+  object WidgetSet::PushButton PushButton4
+  {
+    preset Bounds = <380,178,440,238>;
+    preset Label = "Caption";
+    preset Appearance = PushButtonConfig;
+  }
+
+  $rect <509,100,749,140>
+  object WidgetSet::PushButtonConfig PushButtonConfig1
+  {
+    preset FaceBitmapDefault = Resource::down_arrow1;
+  }
+
+  $rect <509,60,749,100>
+  object WidgetSet::PushButtonConfig PushButtonConfig2
+  {
+    preset FaceBitmapDefault = Resource::l_arrow1;
+  }
+
+  $rect <500,20,740,60>
+  object WidgetSet::PushButtonConfig PushButtonConfig3
+  {
+    preset FaceBitmapDefault = Resource::up_arrow1;
+  }
+}

@@ -1,0 +1,89 @@
+$version 1.0
+
+attr active = Oximeter;
+attr callStackMonitor_Show = false;
+attr connectInspectors = false;
+attr currentCodeInspector = Resources::Bitmap.Update;
+attr debug_TrackUpdates = false;
+attr extractDoc_ClassOverview = true;
+attr extractDoc_DeleteOldFiles = false;
+attr extractDoc_Destination = ./HtmlDoc;
+attr extractDoc_IgnoreAccessors = true;
+attr extractDoc_IgnoreMembers = true;
+attr extractDoc_Navigation = true;
+attr extractDoc_Profiles = false;
+attr extractDoc_Title = Documentation;
+attr extractDoc_Variants = false;
+attr generateClut_ReservedColors = 0;
+attr heapMonitor_Show = false;
+attr language = Default;
+attr profile = Linux;
+attr profilerMonitor_Show = false;
+attr search_CaseSensitive = false;
+attr search_IgnoreDescription = false;
+attr search_IgnoreMosaic = false;
+attr search_LimitToComposer = false;
+attr search_WholeWords = false;
+attr search_WildCards = false;
+
+view Project
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view unit Oximeter
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-74,-7>;
+  attr zoom = 0.5;
+}
+
+codeview Oximeter::ValueDisplay.OnSetCaption
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,1>;
+  attr codeSelStart = <0,1>;
+}
+
+codeview Oximeter::OxygenPanel.Init
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <59,2>;
+  attr codeSelStart = <59,2>;
+}
+
+codeview Oximeter::OxygenPanel.ChangeMode
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,20>;
+  attr codeSelEnd = <2,22>;
+  attr codeSelStart = <0,27>;
+}
+
+codeview Oximeter::OxygenPanel.fadeOut
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,19>;
+  attr codeSelEnd = <2,24>;
+  attr codeSelStart = <42,27>;
+}
+
+codeview Oximeter::OxygenPanel.fadeIn
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <2,33>;
+  attr codeSelStart = <42,37>;
+}
+
+codeview Resources::Bitmap.Update
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}

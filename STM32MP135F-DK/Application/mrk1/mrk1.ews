@@ -1,0 +1,250 @@
+$version 1.0
+
+attr active = Application::SensorScreen;
+attr callStackMonitor_Show = false;
+attr connectInspectors = false;
+attr currentCodeInspector = Application::SensorScreen.Slot1;
+attr debug_TrackUpdates = false;
+attr extractDoc_ClassOverview = true;
+attr extractDoc_DeleteOldFiles = false;
+attr extractDoc_Destination = ./HtmlDoc;
+attr extractDoc_IgnoreAccessors = true;
+attr extractDoc_IgnoreMembers = true;
+attr extractDoc_Navigation = true;
+attr extractDoc_Profiles = false;
+attr extractDoc_Title = Documentation;
+attr extractDoc_Variants = false;
+attr generateClut_ReservedColors = 0;
+attr heapMonitor_Show = false;
+attr language = Default;
+attr profile = Profile;
+attr profilerMonitor_Show = false;
+attr search_CaseSensitive = false;
+attr search_IgnoreDescription = false;
+attr search_IgnoreMosaic = false;
+attr search_LimitToComposer = true;
+attr search_WholeWords = false;
+attr search_WildCards = false;
+
+view Project
+{
+  attr aspectRatio = 1.0;
+  attr enableGrid = true;
+  attr enableWireMode = false;
+  attr grid = 10;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view unit Application
+{
+  attr aspectRatio = 1.0;
+  attr enableGrid = true;
+  attr enableWireMode = false;
+  attr grid = 10;
+  attr scrollTo = <-43,163>;
+  attr zoom = 0.75;
+}
+
+view class Application::HomeScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class Application::SettingScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,-7>;
+  attr zoom = 1.0;
+}
+
+view class Application::CottonScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,89>;
+  attr zoom = 1.0;
+}
+
+view class Application::WeedScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,137>;
+  attr zoom = 1.0;
+}
+
+view class Application::SensorScreen
+{
+  attr enableWireMode = false;
+  attr scrollTo = <-7,41>;
+  attr zoom = 1.0;
+}
+
+codeview Application::Application.Init
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <105,0>;
+}
+
+codeview Application::BootScreen.GoToHome
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <70,0>;
+  attr codeSelStart = <70,0>;
+}
+
+codeview Application::Home.GoToBoot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <16,1>;
+}
+
+codeview Application::HomeScreen.GoToCot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <58,1>;
+  attr codeSelStart = <58,1>;
+}
+
+codeview Application::HomeScreen.GoToBoot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <52,2>;
+  attr codeSelStart = <52,2>;
+}
+
+codeview Application::HomeScreen.GoToWeed
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <70,0>;
+  attr codeSelStart = <70,0>;
+}
+
+codeview Application::HomeScreen.GoToSet
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <42,2>;
+  attr codeSelStart = <42,2>;
+}
+
+codeview Application::HomeScreen.GoToSensor
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <68,0>;
+  attr codeSelStart = <68,0>;
+}
+
+codeview Application::WeedScreen.GoToHome
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <53,2>;
+  attr codeSelStart = <53,2>;
+}
+
+codeview Application::WeedScreen.OnSetProperty
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <24,6>;
+  attr codeSelStart = <24,6>;
+}
+
+codeview Application::SettingScreen.GoToNav
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <65,0>;
+  attr codeSelStart = <65,0>;
+}
+
+codeview Application::SettingScreen.GoToHome
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <70,0>;
+  attr codeSelStart = <70,0>;
+}
+
+codeview Application::NavScreen.GoToSettings
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <69,0>;
+  attr codeSelStart = <69,0>;
+}
+
+codeview Application::SensorScreen.GoToHome
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <31,2>;
+  attr codeSelStart = <31,2>;
+}
+
+codeview Application::CottonScreen.GoToHome
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <50,1>;
+  attr codeSelStart = <50,1>;
+}
+
+codeview Application::CottonScreen.StartPress
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,9>;
+  attr codeSelEnd = <0,19>;
+  attr codeSelStart = <0,19>;
+}
+
+codeview Core::Group.SwitchToDialog
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,11>;
+  attr codeSelEnd = <0,13>;
+  attr codeSelStart = <0,13>;
+}
+
+codeview Application::CottonScreen.OnSetProperty
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <22,6>;
+  attr codeSelStart = <22,6>;
+}
+
+codeview Application::WeedScreen.StartPress
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,19>;
+}
+
+codeview Application::SensorScreen.Slot
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <31,0>;
+  attr codeSelStart = <31,0>;
+}
+
+codeview Application::SensorScreen.Slot1
+{
+  attr codeColSelect = false;
+  attr codeFirstPos = <0,0>;
+  attr codeSelEnd = <0,0>;
+  attr codeSelStart = <0,0>;
+}

@@ -1,0 +1,585 @@
+﻿$version 13.05
+
+$rect <40,10,240,50>
+$output false
+resource Resources::Bitmap wallpaper
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\wallpaper.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <40,60,240,100>
+$output false
+resource Resources::Bitmap cottonHarvy
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\freepik-abstract-wallpaper-with-geometric-shapes-202409140618138H0u\2.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <218,109,418,149>
+$output false
+resource Resources::Bitmap stop
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\stop.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <10,183,210,223>
+$output false
+resource Resources::Bitmap start_button
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\start-button.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <242,172,442,212>
+$output false
+resource Resources::Bitmap tractor
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\tractor.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <300,20,500,60>
+$output false
+resource Resources::Font Font
+{
+  attr fontname FontName = Arial Black;
+  attr fontheight Height = 16;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <370,70,570,110>
+$output false
+resource Resources::Font Font1
+{
+  attr fontname FontName = Arial Black;
+  attr fontheight Height = 18;
+  attr fontheightmode HeightMode = Popular;
+  attr fontquality Quality = High;
+  attr fontranges Ranges = 0x20-0xFF;
+  attr fontaspectratio AspectRatio = 1.0;
+  attr fontbold Bold = false;
+  attr fontitalic Italic = false;
+  attr fontkerning Kerning = true;
+  attr fontrowdistance RowDistance;
+}
+
+$rect <408,145,608,185>
+$output false
+resource Resources::Bitmap cloud
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\cloud.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <526,53,726,93>
+$output false
+resource Resources::Bitmap cotton_icon
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\cotton_icon.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <571,153,771,193>
+$output false
+resource Resources::Bitmap farmer
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\farmer.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <30,114,230,154>
+$output false
+resource Resources::Bitmap npk
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\npk.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <428,183,628,223>
+$output false
+resource Resources::Bitmap logs
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\logs.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <267,311,467,351>
+$output false
+resource Resources::Bitmap button
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\button.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <467,311,667,351>
+$output false
+resource Resources::Bitmap camera
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\camera.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <267,351,467,391>
+$output false
+resource Resources::Bitmap gear
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\gear.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <467,351,667,391>
+$output false
+resource Resources::Bitmap grass
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\grass.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <267,391,467,431>
+$output false
+resource Resources::Bitmap right_arrow
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\right-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <467,391,667,431>
+$output false
+resource Resources::Bitmap security
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\security.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <70,260,270,300>
+$output false
+resource Resources::Bitmap down_arrow
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\down-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <70,340,270,380>
+$output false
+resource Resources::Bitmap l_arrow
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\l-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <60,300,260,340>
+$output false
+resource Resources::Bitmap up_arrow
+{
+  attr bitmapfile FileName = C:\Users\mohan\Downloads\resourcesss\up-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,448,265,488>
+$output false
+resource Resources::Bitmap Bmp_0
+{
+  attr bitmapfile FileName = .\resourcesss\0.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,448,465,488>
+$output false
+resource Resources::Bitmap Bmp_1
+{
+  attr bitmapfile FileName = .\resourcesss\1.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,448,665,488>
+$output false
+resource Resources::Bitmap Bmp_2
+{
+  attr bitmapfile FileName = .\resourcesss\2.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,488,265,528>
+$output false
+resource Resources::Bitmap Bmp_3
+{
+  attr bitmapfile FileName = .\resourcesss\3.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,488,465,528>
+$output false
+resource Resources::Bitmap button1
+{
+  attr bitmapfile FileName = .\resourcesss\button.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,488,665,528>
+$output false
+resource Resources::Bitmap camera1
+{
+  attr bitmapfile FileName = .\resourcesss\camera.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,528,265,568>
+$output false
+resource Resources::Bitmap cloud1
+{
+  attr bitmapfile FileName = .\resourcesss\cloud.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,528,465,568>
+$output false
+resource Resources::Bitmap cotton
+{
+  attr bitmapfile FileName = .\resourcesss\cotton.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,528,665,568>
+$output false
+resource Resources::Bitmap cotton_icon1
+{
+  attr bitmapfile FileName = .\resourcesss\cotton_icon.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,568,265,608>
+$output false
+resource Resources::Bitmap down_arrow1
+{
+  attr bitmapfile FileName = .\resourcesss\down-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,568,465,608>
+$output false
+resource Resources::Bitmap farmer1
+{
+  attr bitmapfile FileName = .\resourcesss\farmer.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,568,665,608>
+$output false
+resource Resources::Bitmap freepik_abstract_wallpaper_with_geometric_shapes_20240914034144FEjh
+{
+  attr bitmapfile FileName = .\resourcesss\freepik-abstract-wallpaper-with-geometric-shapes-20240914034144FEjh.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,608,265,648>
+$output false
+resource Resources::Bitmap gear1
+{
+  attr bitmapfile FileName = .\resourcesss\gear.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,608,465,648>
+$output false
+resource Resources::Bitmap grass1
+{
+  attr bitmapfile FileName = .\resourcesss\grass.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,608,665,648>
+$output false
+resource Resources::Bitmap l_arrow1
+{
+  attr bitmapfile FileName = .\resourcesss\l-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,648,265,688>
+$output false
+resource Resources::Bitmap log_file_8419917
+{
+  attr bitmapfile FileName = .\resourcesss\log-file_8419917.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,648,465,688>
+$output false
+resource Resources::Bitmap logs1
+{
+  attr bitmapfile FileName = .\resourcesss\logs.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,648,665,688>
+$output false
+resource Resources::Bitmap npk1
+{
+  attr bitmapfile FileName = .\resourcesss\npk.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,688,265,728>
+$output false
+resource Resources::Bitmap rain
+{
+  attr bitmapfile FileName = .\resourcesss\rain.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,688,465,728>
+$output false
+resource Resources::Bitmap right_arrow1
+{
+  attr bitmapfile FileName = .\resourcesss\right-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,688,665,728>
+$output false
+resource Resources::Bitmap security1
+{
+  attr bitmapfile FileName = .\resourcesss\security.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,728,265,768>
+$output false
+resource Resources::Bitmap settings
+{
+  attr bitmapfile FileName = .\resourcesss\settings.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,728,465,768>
+$output false
+resource Resources::Bitmap start_button1
+{
+  attr bitmapfile FileName = .\resourcesss\start-button.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,728,665,768>
+$output false
+resource Resources::Bitmap stop1
+{
+  attr bitmapfile FileName = .\resourcesss\stop.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <65,768,265,808>
+$output false
+resource Resources::Bitmap tractor1
+{
+  attr bitmapfile FileName = .\resourcesss\tractor.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <265,768,465,808>
+$output false
+resource Resources::Bitmap up_arrow1
+{
+  attr bitmapfile FileName = .\resourcesss\up-arrow.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}
+
+$rect <465,768,665,808>
+$output false
+resource Resources::Bitmap wallpaper1
+{
+  attr bitmapfile FileName = .\resourcesss\wallpaper.png;
+  attr bitmapdithering Dithering = Auto;
+  attr framesize FrameSize;
+  attr framedelay FrameDelay;
+  attr bitmapformat Format = Native;
+  attr bitmapmode Mode = Default;
+}

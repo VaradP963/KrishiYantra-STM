@@ -1,0 +1,194 @@
+/*******************************************************************************
+*
+* E M B E D D E D   W I Z A R D   P R O J E C T
+*
+*                                                Copyright (c) TARA Systems GmbH
+*                                    written by Paul Banach and Manfred Schweyer
+*
+********************************************************************************
+*
+* This file was generated automatically by Embedded Wizard Studio.
+*
+* Please do not make any modifications of this file! The modifications are lost
+* when the file is generated again by Embedded Wizard Studio!
+*
+* The template of this heading text can be found in the file 'head.ewt' in the
+* directory 'Platforms' of your Embedded Wizard installation directory. If you
+* wish to adapt this text, please copy the template file 'head.ewt' into your
+* project directory and edit the copy only. Please avoid any modifications of
+* the original template file!
+*
+* Version  : 13.05
+* Profile  : Profile
+* Platform : Linux.Software.RGBA8888
+*
+*******************************************************************************/
+
+#ifndef _EffectsWarpFader_H
+#define _EffectsWarpFader_H
+
+#ifdef __cplusplus
+  extern "C"
+  {
+#endif
+
+#include "ewrte.h"
+#if ( EW_RTE_VERSION >> 16 ) != 13
+  #error Wrong version of Embedded Wizard Runtime Environment.
+#endif
+
+#include "ewgfx.h"
+#if ( EW_GFX_VERSION >> 16 ) != 13
+  #error Wrong version of Embedded Wizard Graphics Engine.
+#endif
+
+#include "_EffectsFader.h"
+#include "_EffectsFloatEffect.h"
+#include "_EffectsInt32Effect.h"
+#include "_GraphicsWarpMatrix.h"
+
+/* Forward declaration of the class Core::Group */
+#ifndef _CoreGroup_
+  EW_DECLARE_CLASS( CoreGroup )
+#define _CoreGroup_
+#endif
+
+/* Forward declaration of the class Effects::FaderTask */
+#ifndef _EffectsFaderTask_
+  EW_DECLARE_CLASS( EffectsFaderTask )
+#define _EffectsFaderTask_
+#endif
+
+/* Forward declaration of the class Effects::WarpFader */
+#ifndef _EffectsWarpFader_
+  EW_DECLARE_CLASS( EffectsWarpFader )
+#define _EffectsWarpFader_
+#endif
+
+/* Forward declaration of the class Views::WarpGroup */
+#ifndef _ViewsWarpGroup_
+  EW_DECLARE_CLASS( ViewsWarpGroup )
+#define _ViewsWarpGroup_
+#endif
+
+
+/* The class Effects::WarpFader provides functionality for the fade-in and fade-out 
+   transitions affecting the shape and eventually the opacity of a given GUI component. 
+   This fader is thus ideal wherever one GUI component should smoothly appear or 
+   disappear by 2D/3D rotating, scaling and translating its image within another 
+   component.
+   The parameters for the desired 2D/3D transformation are determined by the embedded 
+   object @Matrix. In case of the fade-in transition (property @Visible is 'true'), 
+   @Matrix specifies the 2D/3D transformation valid just at the beginning of the 
+   transition. In case of the fade-out transition (property @Visible is 'false'), 
+   @Matrix determines the transformation at the end of the transition. The duration 
+   and the timing of the animation are configured in the embedded object @WarpEffect. 
+   During the transition, the fader interpolates the coefficients stored within 
+   @Matrix against an identity matrix (or vice versa).
+   The both properties @Position1 and @Position2 specify the positions, where to 
+   map the center of the warped GUI component image just at the beginning and at 
+   the end of the transition. Both are expressed relative to the top-left corner 
+   of the @Owner component. If the property @UseCurrentState is 'true', the position 
+   where to start the animation is automatically taken over from the center position 
+   of the affected GUI component as it is just in the moment the fader starts the 
+   transition.
+   The parameters for the opacity transition (their start and the end values, the 
+   duration of the transition, the timing, etc.) are configured in the embedded 
+   object @OpacityEffect. If the property @UseCurrentState is 'true', the opacity 
+   to start the animation is automatically taken over from the affected GUI component 
+   as it is just in the moment the fader starts the transition.
+   Whether the fader is considered as performing a fade-in or fade-out transition 
+   is determined by value of the property @Visible. Set this property to the value 
+   'true' if you want the component to appear or remain visible after the transition 
+   is done. Set this property to the value 'false' if your intention is to hide 
+   or keep invisible the component.
+   The fader automatically takes care of adding the GUI component to the intended 
+   owner, when the component should appear and it is not yet a member within the 
+   owner. Moreover, when fading-in the component, the fader automatically focuses 
+   it and restacks it to appear above all other sibling views existing already within 
+   the owner component. This behavior can be configured by modifying the properties 
+   @AssignFocus and @RestackTopmost.
+   The fader automatically removes the GUI component from its owner, when the component 
+   disappears (after fade-out). This behavior can be changed by modifying the property 
+   @RemoveIfHidden.
+   Applying the fade-out transition on a GUI component, which is already invisible 
+   has no effect. Similarly, the fade-in transition has no effect if the GUI component 
+   is already visible and has the opacity and position equal to the specified in 
+   @OpacityEffect object and the property @Position2. In both cases the affected 
+   component retains its actual state and the fader finishes its work immediately 
+   without driving the effect objects and waiting for their completion.
+   In practice, you create an instance of the fader class, configure its properties 
+   (in particular the property @Visible and @Position2), the both objects @WarpEffect 
+   and @OpacityEffect as well as the @Matrix object according to the desired kind 
+   of transition and pass both, the fader instance and the affected GUI component 
+   as parameters in the invocation of the method Core::Group.FadeGroup(). */
+EW_DEFINE_FIELDS( EffectsWarpFader, EffectsFader )
+  EW_OBJECT  ( OpacityEffect,   EffectsInt32Effect )
+  EW_OBJECT  ( WarpEffect,      EffectsFloatEffect )
+  EW_OBJECT  ( Matrix,          GraphicsWarpMatrix )
+  EW_OBJECT  ( current,         GraphicsWarpMatrix )
+  EW_VARIABLE( warpView,        ViewsWarpGroup )
+  EW_PROPERTY( Position2,       XPoint )
+  EW_PROPERTY( Position1,       XPoint )
+  EW_VARIABLE( wasBuffered,     XBool )
+  EW_VARIABLE( finished,        XBool )
+EW_END_OF_FIELDS( EffectsWarpFader )
+
+/* Virtual Method Table (VMT) for the class : 'Effects::WarpFader' */
+EW_DEFINE_METHODS( EffectsWarpFader, EffectsFader )
+  EW_METHOD( IsFinished,        XBool )( EffectsWarpFader _this )
+  EW_METHOD( OnEnd,             void )( EffectsWarpFader _this )
+  EW_METHOD( OnStart,           void )( EffectsWarpFader _this )
+EW_END_OF_METHODS( EffectsWarpFader )
+
+/* The method IsFinished() should return 'true' if the fader has finalized its fading 
+   animation and 'false' if the animation is not started or it is still in progress. 
+   This method should therefore be overridden in derived classes to evaluate the 
+   state of animation effects used inside the fader. */
+XBool EffectsWarpFader_IsFinished( EffectsWarpFader _this );
+
+/* The method OnEnd() is invoked automatically just in the moment, when this fader 
+   and all other faders belonging to the same fading task have signaled that they 
+   are finished with their animations. The default implementation of this method 
+   simply does nothing.
+   Derived classes can override this method and implement there the code to complete 
+   the animation (e.g. to remove the group from its owner after it has been faded-out, 
+   etc.). The implementation of the overridden OnEnd() method has to use the variables 
+   @Group and @Owner to determine on which group the fader has applied the animation. 
+   Depending on the kind of the implemented animation, the OnEnd() method can also 
+   evaluate the properties @UseCurrentState, @AssignFocus and @RestackTopmost. */
+void EffectsWarpFader_OnEnd( EffectsWarpFader _this );
+
+/* The method OnStart() is invoked automatically just in the moment, when the fader 
+   is triggered to begin its animation. The default implementation of this method 
+   simply calls the @Complete() method indicating so, that the fader is done with 
+   its work. Thereupon the next fader waiting for its execution can start.
+   Derived classes should override this method and implement there the code to prepare 
+   and start the desired fade-in/out animation effects. The implementation of the 
+   overridden OnStart() method has to use the variables @Group and @Owner to determine 
+   on which group the fader should apply the animation. Depending on the kind of 
+   the implemented animation, the OnStart() method can also evaluate the properties 
+   @UseCurrentState, @AssignFocus and @RestackTopmost.
+   Please note, if there is a slot method associated to the property @OnInitialize, 
+   this slot method is signaled shortly before the method OnStart() is executed 
+   given the slot method a possibility to apply more individual initialization steps 
+   on the fader just before the animation begins.
+   When the animation reaches its end (e.g. when the animation effects used inside 
+   the fader do terminate), your implementation of the fader should invoke the method 
+   @Complete() otherwise the animation is considered as still being in progress 
+   causing other pending faders to wait. */
+void EffectsWarpFader_OnStart( EffectsWarpFader _this );
+
+/* 'C' function for method : 'Effects::WarpFader.onFinished()' */
+void EffectsWarpFader_onFinished( EffectsWarpFader _this, XObject sender );
+
+/* 'C' function for method : 'Effects::WarpFader.onAnimate()' */
+void EffectsWarpFader_onAnimate( EffectsWarpFader _this, XObject sender );
+
+#ifdef __cplusplus
+  }
+#endif
+
+#endif /* _EffectsWarpFader_H */
+
+/* Embedded Wizard */
