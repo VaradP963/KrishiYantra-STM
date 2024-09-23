@@ -43,39 +43,36 @@
 </ul>
 
 <h2>Installation and Setup</h2>
-<p><h2>Deploying the Application on STM32MP135F-DK</h2>
+<h2>Deploying the Application on STM32MP135F-DK</h2>
 
 <h3>Step 1: Prepare and Connect the STM32MP1 Target</h3>
-<ul>
-    <li>Insert an SD card into the STM32MP135F-DK board.</li>
-    <li>Connect your PC to the ST-LINK/V2-1 port (CN10, Micro-USB) on the STM32MP135F-DK.</li>
-    <li>Connect a power supply to the PWR IN port (USB Type-C) or use your PC to power the board.</li>
-</ul>
+<ol>
+  <li>Insert an SD card into the STM32MP135F-DK board.</li>
+  <li>Connect your PC to the ST-LINK/V2-1 port (CN10, Micro-USB) on the STM32MP135F-DK.</li>
+  <li>Connect a power supply to the PWR IN port (USB Type-C) or use your PC to power the board.</li>
+</ol>
 
 <h3>Step 2: Download the Linux Image to the STM32MP1</h3>
-<ul>
-    <li>Download the STM32MP13x OpenSTLinux Starter Package from STMicroelectronics.</li>
-    <li>Use <code>STM32_Programmer_CLI</code> on your PC (Windows or Linux) to flash the Linux image onto the SD card:
-        <pre><code>STM32_Programmer_CLI -c port=usb1 -w path_to_image/stm32mp1_image.bin -v</code></pre>
-    </li>
-    <li>Insert the SD card into the STM32MP135F-DK once the image is flashed.</li>
-</ul>
-
-<h3>Step 3: Install the SDK</h3>
-<p>To develop and deploy applications using Embedded Wizard, ensure you have the STM32MP1 SDK installed. Follow the setup process provided by Embedded Wizard to configure the SDK and toolchain for the STM32MP1 platform.</p>
+<ol>
+  <li>Download the <strong>STM32MP13x OpenSTLinux Starter Package</strong> from STMicroelectronics.</li>
+  <li>Install the STM32MP1 SDK to work with Embedded Wizard. Follow the setup instructions provided <a href="https://wiki.st.com/stm32mpu/wiki/Getting_started/STM32MP1_boards/STM32MP135x-DK/Develop_on_Arm%C2%AE_Cortex%C2%AE-A7">here</a> to configure the SDK and toolchain for STM32MP1.</li>
+</ol>
 
 <h3>Step 4: Deploy the Application</h3>
-<ul>
-    <li>Navigate to the folder containing the compiled application (<code>.bin</code> file).</li>
-    <li>Use the following command to flash the application onto the board:
-        <pre><code>STM32_Programmer_CLI -c port=usb1 -w path_to_application/application.bin -v</code></pre>
-    </li>
-    <li>Once the application is flashed, reset the STM32MP135F-DK to boot from the SD card.</li>
-</ul>
+<ol>
+  <li>Navigate to the <strong>STM32MP135FDK</strong> folder where the <code>.bin</code> file is located and copy it to the STM32MP135F-DK.</li>
+  <li>SSH into the STM32MP135F-DK or use a terminal to access the board.</li>
+  <li>Stop the Wayland/Weston service before running the application by executing one of the following commands:
+    <pre><code>systemctl stop weston-launch.service</code></pre>
+    Or:
+    <pre><code>pkill weston</code></pre>
+  </li>
+  <li>Navigate to the folder where you copied the application file on the STM32MP135F-DK.</li>
+  <li>Run the application by executing:
+    <pre><code>./KrishiApp</code></pre>
+  </li>
+</ol>
 
-<h3>Step 5: Run the Application</h3>
-<p>After rebooting, the application deployed via Embedded Wizard will run on the board, displaying the user interface and controlling the bot's functions.</p>
-</p>
 
 <h2>Usage</h2>
 <p>[Demo Video:](https://youtu.be/GS9OnF0EQxI)</p>
