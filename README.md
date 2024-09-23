@@ -46,10 +46,4 @@
 <p>Provide setup instructions here, including dependencies, required hardware, and configuration steps.</p>
 
 <h2>Usage</h2>
-<p>Explain how to operate the bot, connect the machine learning models, and run field tests for harvesting and weed management.</p>
-
-<h2>Contributing</h2>
-<p>Outline guidelines for contributions, bug reports, and feature requests.</p>
-
-<h2>License</h2>
-<p>Specify the license for your project here.</p>
+<p>[Demo Video:](https://youtu.be/GS9OnF0EQxI)</p>
